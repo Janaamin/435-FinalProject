@@ -1,6 +1,8 @@
 const express = require('express');
-const connectDB = require('./config/db');   // Import the database connection
-require('dotenv').config();                 // Loading environment variables
+const connectDB = require('./config/db');
+const dotenv = require('dotenv');
+
+dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,15 +10,18 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 
-// Connect to the database (from db.js)
+// Connect to the database
 connectDB();
+
+// Routes
+app.use('/api/auth', require('./routes/authRoutes'));
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('Hello Node and Express API');
+  res.send('Welcome to AgentConnect API');
 });
 
-// Starting the server
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
