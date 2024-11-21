@@ -4,10 +4,10 @@ const jwt = require('jsonwebtoken');
 
 // Signup controller
 const signup = async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password, role, number, image, specializations, experience, areaServed } = req.body;
 
   // Validate required fields
-  if (!name || !email || !password || !role) {
+  if (!name || !email || !password || !role || !number) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
@@ -19,10 +19,20 @@ const signup = async (req, res) => {
     }
 
     // Create and save the new user
-    const newUser = new User({ name, email, password, role });
+    const newUser = new User({
+      name, 
+      email, 
+      password, 
+      role,
+      number,
+      image, 
+      specializations: role === 'agent' ? specializations : undefined, // Only for agents
+      experience: role === 'agent' ? experience : undefined, // Only for agents
+      areaServed: role === 'agent' ? areaServed : undefined, // Only for agents
+    });
     await newUser.save();
-
     res.status(201).json({ message: 'User registered successfully' });
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
