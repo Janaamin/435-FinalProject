@@ -51,6 +51,15 @@ const updateUserProfile = async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   };
+
+  const isValidUrl = (url) => {
+    const urlRegex = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/gm;
+    return urlRegex.test(url);
+  };
+  
+//   if (updates.image && !isValidUrl(updates.image)) {
+//     return res.status(400).json({ message: 'Invalid image URL' });
+//   }
   
   module.exports = { getUserProfile, updateUserProfile, getAllAgents };
   
