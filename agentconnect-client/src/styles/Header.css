@@ -5,6 +5,7 @@
   background-color: #151515;
   color: white;
   padding: 10px 20px;
+  width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -21,13 +22,50 @@
   margin-right: 10px;
 }
 
+.main-header .title {
+  font-size: 24px;
+}
+
 .main-header .auth-buttons .btn {
   background-color: white;
   color: #151515;
+  border: none;
   padding: 8px 16px;
   margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .main-header .auth-buttons .btn:hover {
   background-color: #eaeaea;
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ebeadc;
+  padding: 15px 20px;
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+}
+
+.search-header .search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-header .filters {
+  display: flex;
+  gap: 10px;
+}
+
+.search-header .filters .dropdown {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

@@ -4,4 +4,30 @@ footer {
   padding: 10px;
   border-top: 1px solid #ccc;
   margin-top: auto;
+  width: 100%;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.svg-logo {
+  width: 40px;
+  height: 40px;
+  color: #333;
+}
+
+.house-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Jacques Francois', serif;
 }
