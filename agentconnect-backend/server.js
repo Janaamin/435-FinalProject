@@ -1,11 +1,17 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
+const cors = require('cors');
+
 
 dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+// Middleware
+app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+app.use(cors()); // Allow all origins (for development)
 
 // Middleware
 app.use(express.json());

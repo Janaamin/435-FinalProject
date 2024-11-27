@@ -1,0 +1,33 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #151515;
+  color: white;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.main-header .logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.main-header .auth-buttons .btn {
+  background-color: white;
+  color: #151515;
+  padding: 8px 16px;
+  margin-left: 10px;
+}
+
+.main-header .auth-buttons .btn:hover {
+  background-color: #eaeaea;
+}

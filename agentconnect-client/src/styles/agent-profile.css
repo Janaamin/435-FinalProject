@@ -1,0 +1,91 @@
+.agent-profile {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .agent-profile img.agent-image-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .agent-profile label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .agent-profile input.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .agent-profile button.btn {
+    background-color: #151515;
+    color: white;
+    padding: 11px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .agent-profile button.btn:hover {
+    background-color: #333;
+  }
+
+  /* General styles for all images */
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .agent-card img,
+  .agent-profile img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  .agent-profile, 
+  .agent-card {
+    width: 60%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fefefe;
+    border: 1px solid #040404;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .agent-profile p, 
+  .agent-card p {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #0b0a0a;
+  }
+
+
+/*  Hover effect for cards */
+.agent-card {
+  background-color:  #f1efde; 
+
+}
