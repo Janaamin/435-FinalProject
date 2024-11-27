@@ -34,6 +34,18 @@ const updateUserProfile = async (req, res) => {
     try {
       const userId = req.user.userId; // Extract user ID from decoded token
       const updates = req.body; // Get updates from the request body
+      
+      // Debug logs
+      console.log('Updates received:', updates);
+
+      // Check if a file was uploaded
+    if (req.file) {
+      updates.image = `/uploads/${req.file.filename}`;
+      console.log('Uploaded image path:', updates.image);
+    } else {
+      console.log('No file uploaded.');
+    }
+    
   
       const updatedUser = await User.findByIdAndUpdate(
         userId,
@@ -74,8 +86,6 @@ const updateUserProfile = async (req, res) => {
 
   };
 
-
-
   // Fetch specific agent's public profile
   const getAgentProfile = async (req, res) => {
     const { id } = req.params; // Extract agent ID from URL
@@ -96,9 +106,43 @@ const updateUserProfile = async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   };
+  // Search agents by name, area, or specialization
+  const searchAgents = async (req, res) => {
+    try {
+      const { query, area, specialization } = req.query;
   
+      // Debug logs
+      console.log('Search Query Parameters:', { query, area, specialization });
+  
+      // Build the search filter
+      const filter = {};
+      if (query) {
+        filter.name = { $regex: query, $options: 'i' }; // Case-insensitive search
+      }
+      if (area && area !== 'All Areas') {
+        filter.areaServed = area; // Match exact area
+      }
+      if (specialization && specialization !== 'All Specializations') {
+        filter.specializations = specialization; // Match exact specialization
+      }
 
+    // Debug log for constructed filter
+    console.log('Constructed Filter:', filter);
 
+    // Fetch agents from the database
+    const agents = await User.find({ role: 'agent', ...filter }).select('-password');
+
+    // Debug log for results
+    console.log('Agents Found:', agents);
+
+    res.status(200).json(agents);
+  } catch (error) {
+    console.error('Error searching agents:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+  };
+
+  
   const isValidUrl = (url) => {
     const urlRegex = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/gm;
     return urlRegex.test(url);
@@ -108,5 +152,5 @@ const updateUserProfile = async (req, res) => {
 //     return res.status(400).json({ message: 'Invalid image URL' });
 //   }
   
-  module.exports = { getUserProfile, updateUserProfile, getAllAgents, getAgentProfile, deleteUserProfile };
+  module.exports = { getUserProfile, updateUserProfile, getAllAgents, getAgentProfile, deleteUserProfile, searchAgents };
   

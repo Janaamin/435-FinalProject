@@ -1,0 +1,54 @@
+.home-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .home-container h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .agent-card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px #0000001a;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .agent-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .agent-top-section {
+    background: #f0eeee;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .agent-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .agent-details p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .btn.learn-more {
+    margin-top: 10px;
+  }
+  
