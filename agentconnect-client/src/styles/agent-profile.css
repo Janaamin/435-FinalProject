@@ -1,43 +1,53 @@
 .agent-profile {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
   }
   
   .agent-profile img.agent-image-large {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   
   .agent-profile label {
     font-weight: bold;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     display: block;
+    font-size: 23px;
   }
   
   .agent-profile input.form-input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 15px;
+    margin-bottom: 23px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 20px;
   }
   
   .agent-profile button.btn {
-    background-color: #151515;
+    background-color: black; 
     color: white;
-    padding: 11px;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid #ccc; 
+    padding: 12px 30px;
+    border-radius: 4px; 
+    font-size: 24px; 
+    font-family: 'Jacques Francois', serif; 
     cursor: pointer;
-    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
   }
+  
+  .agent-profile button.btn:hover {
+    background-color: #333; 
+    color: white; 
+    transform: scale(1.05); 
+  }
+  
   
   .agent-profile button.btn:hover {
     background-color: #333;
@@ -54,8 +64,8 @@
   
   .agent-card img,
   .agent-profile img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     object-fit: cover;
     border-radius: 50%;
     margin: 0 auto;
@@ -65,28 +75,29 @@
   
   .agent-profile, 
   .agent-card {
-    width: 60%;
-    max-width: 800px;
+    width: 70%;
+    max-width: 900px;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #fefefe;
+    padding: 25x;
+    background-color: #f0f0f0;
     border: 1px solid #040404;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
   
   .agent-profile p, 
   .agent-card p {
-    margin: 10px 0;
-    font-size: 20px;
+    margin: 15px 0;
+    font-size: 22px;
     color: #0b0a0a;
   }
   
-
-
 /*  Hover effect for cards */
 .agent-card {
   background-color:  #ecebe0; 
 
+}
+.agent-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle hover effect */
 }

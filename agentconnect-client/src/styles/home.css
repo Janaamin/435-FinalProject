@@ -1,54 +1,81 @@
 .home-container {
-    padding: 20px;
+    padding: 40px; 
     text-align: center;
+    background-color: #f8f9fa; 
+    font-family: 'Jacques Francois', serif; 
   }
   
   .home-container h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
+    font-size: 48px; 
+    margin-bottom: 30px;
+    color: #333; 
+    text-transform: capitalize;
   }
   
   .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 30px; 
     justify-content: center;
+    align-items: stretch; 
   }
   
   .agent-card {
     background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px #0000001a;
-    padding: 10px;
-    transition: transform 0.2s ease-in-out;
+    border: none; 
+    border-radius: 12px; 
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
   }
   
   .agent-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px); 
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); 
   }
   
   .agent-top-section {
-    background: #f0eeee;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    background: #eff0f1; 
+    padding: 20px; 
+    border-radius: 12px; 
+    margin-bottom: 15px;
+    width: 100%; 
   }
   
   .agent-image {
-    width: 120px;
-    height: 120px;
+    width: 140px; 
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border: 3px solid #ccc; 
   }
   
   .agent-details p {
-    margin: 5px 0;
-    font-size: 14px;
+    margin: 10px 0; 
+    font-size: 16px; 
+    color: #555; 
   }
   
   .btn.learn-more {
-    margin-top: 10px;
+    margin-top: 15px; 
+    padding: 15px 30px; 
+    background-color: #151515; 
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Jacques Francois', serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn.learn-more:hover {
+    background-color: #333; 
+    transform: scale(1.05); 
   }
   
