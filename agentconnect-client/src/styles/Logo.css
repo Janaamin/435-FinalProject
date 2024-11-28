@@ -1,0 +1,18 @@
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo {
+    width: 70px; /* Adjust size to fit header */
+    height: 70px;
+    object-fit: cover;
+  }
+  
+  .brand-name {
+    font-size: 30px;
+    color: white;
+    font-family: 'Jacques Francois', serif;
+  }
+  
