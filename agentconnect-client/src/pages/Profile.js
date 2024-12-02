@@ -50,6 +50,16 @@ const Profile = () => {
     fetchAgent();
   }, [navigate]);
 
+
+  const handleLogout = () => {
+    // Remove the token from localStorage
+    localStorage.removeItem('token');
+
+    // Redirect to the login page
+    navigate('/login');
+  };
+
+
   const handleDeleteAccount = async () => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete your account? This action cannot be undone."
@@ -258,6 +268,9 @@ const Profile = () => {
             Edit
           </button>
         )}
+        <button className="btn logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
         <button className="btn delete-btn" onClick={handleDeleteAccount}>
           Delete Account
         </button>
