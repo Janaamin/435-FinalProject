@@ -18,15 +18,14 @@ const App = () => (
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} /> {/* Home displays agents */}
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/agents/:id" element={<AgentProfile />} /> {/* Agent Profile */}
-          <Route path="/profile" element={<Profile />} /> {/* Logged-in user's profile */}
-          <Route path="/search" element={<SearchResults />} />
-      
+  <Route path="/" element={<Home />} />
+  <Route path="/signup" element={<Signup />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/profile" element={<Profile />} /> 
+  <Route path="/search" element={<SearchResults />} />
+  <Route path="/agents/:id" element={<AgentDetails />} /> {/* Use only AgentDetails */}
+</Routes>
 
-        </Routes>
       </main>
       <Footer />
     </div>

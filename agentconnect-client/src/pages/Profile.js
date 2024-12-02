@@ -8,13 +8,14 @@ const Profile = () => {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(true);
-  const [previewImage, setPreviewImage] = useState(''); // For previewing uploaded images
-  const navigate = useNavigate(); // Initialize navigate for redirection
+  const [previewImage, setPreviewImage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       alert('You need to log in to view your profile');
+      navigate('/login');
       return;
     }
 
@@ -33,10 +34,11 @@ const Profile = () => {
         setAgent(data);
         setFormData({
           ...data,
-          specializations: data.specializations?.join(', ') || '', // Convert array to string for editing
-          areaServed: data.areaServed?.join(', ') || '', // Convert array to string for editing
+          specializations: data.specializations?.join(', ') || '',
+          areaServed: data.areaServed?.join(', ') || '',
+          learnMore: data.learnMore || '', // Initialize learnMore field
         });
-        setPreviewImage(data.image); // Set the initial image preview
+        setPreviewImage(data.image);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching agent:', error.message);
@@ -46,7 +48,7 @@ const Profile = () => {
     };
 
     fetchAgent();
-  }, []);
+  }, [navigate]);
 
   const handleDeleteAccount = async () => {
     const confirmDelete = window.confirm(
@@ -57,7 +59,6 @@ const Profile = () => {
 
     try {
       const token = localStorage.getItem("token");
-
       if (!agent || !agent._id) {
         console.error("Agent ID is undefined");
         alert("Failed to delete account. Please try again.");
@@ -65,12 +66,10 @@ const Profile = () => {
       }
 
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/users/profile/${agent._id}`, // Ensure _id is passed correctly
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/profile/${agent._id}`,
         {
           method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
@@ -79,8 +78,8 @@ const Profile = () => {
       }
 
       alert("Your account has been deleted successfully.");
-      localStorage.removeItem("token"); // Clear user token
-      navigate("/signup"); // Redirect to sign-up page
+      localStorage.removeItem("token");
+      navigate("/signup");
     } catch (error) {
       console.error("Error deleting account:", error.message);
       alert("Failed to delete your account. Please try again later.");
@@ -89,10 +88,9 @@ const Profile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData({
       ...formData,
-      [name]: value, // Update form data for editing
+      [name]: value,
     });
   };
 
@@ -100,7 +98,7 @@ const Profile = () => {
     const file = e.target.files[0];
     if (file) {
       setFormData({ ...formData, imageFile: file });
-      setPreviewImage(URL.createObjectURL(file)); // Update the preview to show the selected image
+      setPreviewImage(URL.createObjectURL(file));
     }
   };
 
@@ -109,23 +107,22 @@ const Profile = () => {
     try {
       const formDataObj = new FormData();
 
-      // Normalize specializations and areas served into arrays
       const normalizedFormData = {
         ...formData,
         specializations: formData.specializations
           ?.split(',')
           .map((v) => v.trim())
-          .filter(Boolean), // Convert string to array
+          .filter(Boolean),
         areaServed: formData.areaServed
           ?.split(',')
           .map((v) => v.trim())
-          .filter(Boolean), // Convert string to array
+          .filter(Boolean),
+        learnMore: formData.learnMore, // Include learnMore
       };
 
-      // Append form fields
       for (const key in normalizedFormData) {
         if (key === 'imageFile' && normalizedFormData[key]) {
-          formDataObj.append('image', normalizedFormData[key]); // Append the image file
+          formDataObj.append('image', normalizedFormData[key]);
         } else if (key !== 'imageFile') {
           formDataObj.append(key, normalizedFormData[key]);
         }
@@ -133,9 +130,7 @@ const Profile = () => {
 
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/profile`, {
         method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
         body: formDataObj,
       });
 
@@ -147,10 +142,11 @@ const Profile = () => {
       setAgent(updatedData);
       setFormData({
         ...updatedData,
-        specializations: updatedData.specializations?.join(', ') || '', // Convert array to string for editing
-        areaServed: updatedData.areaServed?.join(', ') || '', // Convert array to string for editing
+        specializations: updatedData.specializations?.join(', ') || '',
+        areaServed: updatedData.areaServed?.join(', ') || '',
+        learnMore: updatedData.learnMore || '', // Update learnMore field
       });
-      setPreviewImage(updatedData.image); // Update the preview with the saved image URL
+      setPreviewImage(updatedData.image);
       setEditMode(false);
       alert('Profile updated successfully!');
     } catch (error) {
@@ -159,13 +155,8 @@ const Profile = () => {
     }
   };
 
-  if (loading) {
-    return <p>Loading agent details...</p>;
-  }
-
-  if (!agent) {
-    return <p>No profile information available.</p>;
-  }
+  if (loading) return <p>Loading agent details...</p>;
+  if (!agent) return <p>No profile information available.</p>;
 
   return (
     <div className="agent-profile">
@@ -176,7 +167,7 @@ const Profile = () => {
         experience={agent.experience}
         image={`${process.env.REACT_APP_BACKEND_URL}${agent.image || '/uploads/placeholder.jpg'}`}
         number={agent.number}
-        areaServed={agent.areaServed?.join(', ')} 
+        areaServed={agent.areaServed?.join(', ')}
       />
 
       <div className="edit-section">
@@ -218,7 +209,7 @@ const Profile = () => {
           <input
             type="text"
             name="areaServed"
-            value={formData.areaServed || ''} // Ensure areas served is displayed
+            value={formData.areaServed || ''}
             onChange={handleChange}
             disabled={!editMode}
             className="form-input"
@@ -245,6 +236,18 @@ const Profile = () => {
             disabled={!editMode}
             className="form-input"
           />
+        </div>
+        <div>
+          <label>Learn More About Me:</label>
+          <textarea
+            name="learnMore"
+            value={formData.learnMore || ''}
+            onChange={handleChange}
+            disabled={!editMode}
+            rows="5"
+            className="form-input"
+            placeholder="Add details about yourself..."
+          ></textarea>
         </div>
         {editMode ? (
           <button className="btn" onClick={handleSave}>
