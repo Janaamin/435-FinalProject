@@ -4,8 +4,8 @@ import AgentCard from '../components/AgentCard';
 import "./../styles/SearchResults.css";
 
 const SearchResults = () => {
-  const [agents, setAgents] = useState([]);
-  const location = useLocation();
+  const [agents, setAgents] = useState([]); // State to store fetched agents
+  const location = useLocation(); // Get search parameters from URL
 
   useEffect(() => {
     const fetchAgents = async () => {
@@ -16,22 +16,21 @@ const SearchResults = () => {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
           }
         );
-  
+
         if (!response.ok) {
           throw new Error('Failed to fetch agents');
         }
-  
+
         const data = await response.json();
-        console.log('Fetched Agents:', data); 
+        console.log('Fetched Agents:', data); // Debugging log
         setAgents(data);
       } catch (error) {
         console.error('Error fetching agents:', error.message);
       }
     };
-  
+
     fetchAgents();
   }, [location.search]);
-  
 
   return (
     <div className="search-results">
@@ -42,10 +41,11 @@ const SearchResults = () => {
             <AgentCard
               key={agent._id}
               name={agent.name}
-              specialization={agent.specializations?.join(', ')}
-              experience={agent.experience}
-              image={`${process.env.REACT_APP_BACKEND_URL}${agent.image || '/uploads/placeholder.jpg'}`}
-              number={agent.number}
+              specialization={agent.specializations?.join(', ') || 'N/A'} // Display specializations
+              experience={agent.experience || 'N/A'} // Display experience
+              image={`${process.env.REACT_APP_BACKEND_URL}${agent.image || '/uploads/placeholder.jpg'}`} // Display image
+              number={agent.number || 'N/A'} // Display phone number
+              areaServed={agent.areaServed?.length ? agent.areaServed.join(', ') : 'N/A'} // Correctly display areas served
             />
           ))
         ) : (
@@ -54,7 +54,6 @@ const SearchResults = () => {
       </div>
     </div>
   );
-  
 };
 
 export default SearchResults;

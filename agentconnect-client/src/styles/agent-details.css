@@ -1,0 +1,62 @@
+/* Container for the Agent Details Page */
+.agent-details-container {
+    padding: 40px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full-screen height */
+  }
+  
+  /* Card Layout for Agent Details */
+  .agent-details-card {
+    background: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Jacques Francois', serif;
+  }
+  
+  /* Profile Image Styling */
+  .agent-image-container {
+    margin-bottom: 20px;
+  }
+  
+  .agent-profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #151515;
+  }
+  
+  /* Agent Information Styling */
+  .agent-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .agent-info p {
+    font-size: 16px;
+    margin: 8px 0;
+    color: #555;
+  }
+  
+  .agent-info p strong {
+    color: #151515;
+  }
+  
+  /* Loading and Error Messages */
+  .loading-message,
+  .error-message {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AgentCard from '../components/AgentCard';
 import "./../styles/agent-profile.css";
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const [agent, setAgent] = useState(null);
@@ -8,6 +9,7 @@ const Profile = () => {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(true);
   const [previewImage, setPreviewImage] = useState(''); // For previewing uploaded images
+  const navigate = useNavigate(); // Initialize navigate for redirection
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -29,7 +31,11 @@ const Profile = () => {
 
         const data = await response.json();
         setAgent(data);
-        setFormData(data);
+        setFormData({
+          ...data,
+          specializations: data.specializations?.join(', ') || '', // Convert array to string for editing
+          areaServed: data.areaServed?.join(', ') || '', // Convert array to string for editing
+        });
         setPreviewImage(data.image); // Set the initial image preview
         setLoading(false);
       } catch (error) {
@@ -42,13 +48,52 @@ const Profile = () => {
     fetchAgent();
   }, []);
 
+  const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete your account? This action cannot be undone."
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!agent || !agent._id) {
+        console.error("Agent ID is undefined");
+        alert("Failed to delete account. Please try again.");
+        return;
+      }
+
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/profile/${agent._id}`, // Ensure _id is passed correctly
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete account");
+      }
+
+      alert("Your account has been deleted successfully.");
+      localStorage.removeItem("token"); // Clear user token
+      navigate("/signup"); // Redirect to sign-up page
+    } catch (error) {
+      console.error("Error deleting account:", error.message);
+      alert("Failed to delete your account. Please try again later.");
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'specializations' || name === 'areaServed') {
-      setFormData({ ...formData, [name]: value.split(',').map((v) => v.trim()) });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+
+    setFormData({
+      ...formData,
+      [name]: value, // Update form data for editing
+    });
   };
 
   const handleFileChange = (e) => {
@@ -64,19 +109,32 @@ const Profile = () => {
     try {
       const formDataObj = new FormData();
 
+      // Normalize specializations and areas served into arrays
+      const normalizedFormData = {
+        ...formData,
+        specializations: formData.specializations
+          ?.split(',')
+          .map((v) => v.trim())
+          .filter(Boolean), // Convert string to array
+        areaServed: formData.areaServed
+          ?.split(',')
+          .map((v) => v.trim())
+          .filter(Boolean), // Convert string to array
+      };
+
       // Append form fields
-      for (const key in formData) {
-        if (key === 'imageFile' && formData[key]) {
-          formDataObj.append('image', formData[key]); // Append the image file
+      for (const key in normalizedFormData) {
+        if (key === 'imageFile' && normalizedFormData[key]) {
+          formDataObj.append('image', normalizedFormData[key]); // Append the image file
         } else if (key !== 'imageFile') {
-          formDataObj.append(key, formData[key]);
+          formDataObj.append(key, normalizedFormData[key]);
         }
       }
 
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/profile`, {
         method: 'PUT',
         headers: {
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
         body: formDataObj,
       });
@@ -87,7 +145,11 @@ const Profile = () => {
 
       const updatedData = await response.json();
       setAgent(updatedData);
-      setFormData(updatedData);
+      setFormData({
+        ...updatedData,
+        specializations: updatedData.specializations?.join(', ') || '', // Convert array to string for editing
+        areaServed: updatedData.areaServed?.join(', ') || '', // Convert array to string for editing
+      });
       setPreviewImage(updatedData.image); // Update the preview with the saved image URL
       setEditMode(false);
       alert('Profile updated successfully!');
@@ -108,7 +170,6 @@ const Profile = () => {
   return (
     <div className="agent-profile">
       <h1>My Profile</h1>
-      {/* Display AgentCard */}
       <AgentCard
         name={agent.name}
         specialization={agent.specializations?.join(', ')}
@@ -118,7 +179,6 @@ const Profile = () => {
         areaServed={agent.areaServed?.join(', ')} 
       />
 
-      {/* Edit Form */}
       <div className="edit-section">
         <div>
           <label>Name:</label>
@@ -136,7 +196,7 @@ const Profile = () => {
           <input
             type="text"
             name="specializations"
-            value={formData.specializations?.join(', ') || ''}
+            value={formData.specializations || ''}
             onChange={handleChange}
             disabled={!editMode}
             className="form-input"
@@ -157,8 +217,8 @@ const Profile = () => {
           <label>Areas Served:</label>
           <input
             type="text"
-            name="areaServed" 
-            value={formData.areaServed?.join(', ') || ''} // Join array for display
+            name="areaServed"
+            value={formData.areaServed || ''} // Ensure areas served is displayed
             onChange={handleChange}
             disabled={!editMode}
             className="form-input"
@@ -195,6 +255,9 @@ const Profile = () => {
             Edit
           </button>
         )}
+        <button className="btn delete-btn" onClick={handleDeleteAccount}>
+          Delete Account
+        </button>
       </div>
     </div>
   );

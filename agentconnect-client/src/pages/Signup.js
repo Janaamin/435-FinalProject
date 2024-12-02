@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { signup } from '../api'; // API function for signup
-import "./../styles/signup.css"; // Import main styles
+import { useNavigate } from 'react-router-dom';
+import './../styles/signup.css'; // Import main styles
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const Signup = () => {
     role: 'agent',
     number: '',
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Reset form data on component mount
@@ -27,13 +30,29 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic validation
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      alert('Password must be at least 6 characters long.');
+      return;
+    }
+
     try {
       const response = await signup(formData); // Signup API call
       console.log('Signup Response:', response.data);
       alert('Signup successful!');
+      navigate('/login'); // Redirect to login page
     } catch (error) {
-      console.error('Signup Error:', error.response || error.message);
-      alert('Error during signup. Please check your input.');
+      if (error.response && error.response.data) {
+        alert(`Error: ${error.response.data.message}`);
+      } else {
+        alert('Error during signup. Please try again.');
+      }
     }
   };
 

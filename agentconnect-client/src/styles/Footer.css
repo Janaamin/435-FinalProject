@@ -1,12 +1,12 @@
 footer {
   background-color: #ebeadc;
   text-align: center;
-  padding: 20px; 
-  border-top: 2px solid #ccc; 
+  padding: 7px; 
+  border-top: 2px solid #0b0b0b; 
   width: 100%;
   position: fixed; 
   bottom: 0; /* Aligns footer to the bottom of the viewport */
-  font-size: 18px; 
+  font-size: 12px; 
   font-family: 'Jacques Francois', serif; 
   font-weight: bold; 
 }

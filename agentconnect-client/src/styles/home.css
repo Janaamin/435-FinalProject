@@ -1,81 +1,94 @@
+/* Home Container */
 .home-container {
-    padding: 40px; 
-    text-align: center;
-    background-color: #f8f9fa; 
-    font-family: 'Jacques Francois', serif; 
-  }
-  
-  .home-container h1 {
-    font-size: 48px; 
-    margin-bottom: 30px;
-    color: #333; 
-    text-transform: capitalize;
-  }
-  
-  .cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; 
-    justify-content: center;
-    align-items: stretch; 
-  }
-  
-  .agent-card {
-    background: white;
-    border: none; 
-    border-radius: 12px; 
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); 
-    padding: 20px; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-align: center;
-  }
-  
-  .agent-card:hover {
-    transform: translateY(-8px); 
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); 
-  }
-  
-  .agent-top-section {
-    background: #eff0f1; 
-    padding: 20px; 
-    border-radius: 12px; 
-    margin-bottom: 15px;
-    width: 100%; 
-  }
-  
-  .agent-image {
-    width: 140px; 
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-    border: 3px solid #ccc; 
-  }
-  
-  .agent-details p {
-    margin: 10px 0; 
-    font-size: 16px; 
-    color: #555; 
-  }
-  
-  .btn.learn-more {
-    margin-top: 15px; 
-    padding: 15px 30px; 
-    background-color: #151515; 
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Jacques Francois', serif;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .btn.learn-more:hover {
-    background-color: #333; 
-    transform: scale(1.05); 
-  }
-  
+  padding: 40px;
+  text-align: center;
+  background-color: #f8f9fa;
+  font-family: 'Jacques Francois', serif;
+  border: 2px solid #000000; /* Added border for main container */
+  border-radius: 1px; /* Subtle rounded edges */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Clean shadow for a professional look */
+}
+
+/* Homepage Title */
+.home-container h1 {
+  font-size: 35px;
+  margin-bottom: 30px;
+  color: #333;
+  text-transform: capitalize;
+  font-weight: bold; /* Slightly bolder title */
+  letter-spacing: 1px; /* Adds spacing for a more polished look */
+}
+
+/* Cards Container */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Agent Card */
+.home-agent-card {
+  border: 1px solid #b5b4b4; /* Subtle border around each card */
+  background: linear-gradient(to bottom, #e8e8df, #ffffff); /* Slight gradient for card background */
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-agent-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Container */
+.home-agent-image-container {
+  background: linear-gradient(to bottom, #e8e8df, #ffffff); /* Harmonized gradient with card background */
+  padding: 10px;
+  border-radius: 50%; /* Circular container for the image */
+  margin-bottom: 15px;
+}
+
+/* Agent Image */
+.home-agent-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #000000; /* Slightly bolder border */
+  display: block; /* Ensures image stays centered */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Agent Details */
+.home-agent-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Learn More Button */
+.btn.learn-more {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #151515;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Jacques Francois', serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn.learn-more:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}

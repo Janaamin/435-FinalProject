@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import AgentProfile from './components/AgentProfile'; // For agent details
 import Profile from './pages/Profile'; // Profile for logged-in user
 import SearchResults from './pages/SearchResults';
+import AgentDetails from './pages/AgentDetails';
 
 import "./styles/main.css";
 
@@ -23,6 +24,8 @@ const App = () => (
           <Route path="/agents/:id" element={<AgentProfile />} /> {/* Agent Profile */}
           <Route path="/profile" element={<Profile />} /> {/* Logged-in user's profile */}
           <Route path="/search" element={<SearchResults />} />
+      
+
         </Routes>
       </main>
       <Footer />

@@ -1,103 +1,119 @@
+/* Agent Profile Container */
 .agent-profile {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 30px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
-  }
-  
-  .agent-profile img.agent-image-large {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    margin-bottom: 25px;
-  }
-  
-  .agent-profile label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-    font-size: 23px;
-  }
-  
-  .agent-profile input.form-input {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 23px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 20px;
-  }
-  
-  .agent-profile button.btn {
-    background-color: black; 
-    color: white;
-    border: 1px solid #ccc; 
-    padding: 12px 30px;
-    border-radius: 4px; 
-    font-size: 24px; 
-    font-family: 'Jacques Francois', serif; 
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
-  }
-  
-  .agent-profile button.btn:hover {
-    background-color: #333; 
-    color: white; 
-    transform: scale(1.05); 
-  }
-  
-  
-  .agent-profile button.btn:hover {
-    background-color: #333;
-  }
-
-  /* General styles for all images */
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-  
-  .agent-card img,
-  .agent-profile img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-  }
-  
-  .agent-profile, 
-  .agent-card {
-    width: 70%;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 25x;
-    background-color: #f0f0f0;
-    border: 1px solid #040404;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .agent-profile p, 
-  .agent-card p {
-    margin: 15px 0;
-    font-size: 22px;
-    color: #0b0a0a;
-  }
-  
-/*  Hover effect for cards */
-.agent-card {
-  background-color:  #ecebe0; 
-
+  max-width: 600px; 
+  margin: 40px auto;
+  padding: 20px; 
+  background: #ffffff; 
+  border: 2px solid #151515;
+  border-radius: 8px; 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
+  text-align: center; 
 }
+
+/* Image Styling */
+.agent-profile img.agent-image-large {
+  width: 180px; 
+  height: 180px;
+  border-radius: 50%; 
+  margin-bottom: 25px;
+}
+
+/* Form Inputs */
+.agent-profile input.form-input {
+  width: 100%;
+  padding: 12px; 
+  margin-bottom: 20px; 
+  border: 1px solid #ccc;
+  border-radius: 6px; 
+  font-size: 16px; 
+}
+
+/* Buttons */
+.agent-profile button.btn {
+  background-color: #151515;
+  color: white;
+  padding: 12px 30px;
+  border: 1px solid #151515; 
+  border-radius: 6px; 
+  font-size: 16px;
+  font-family: 'Jacques Francois', serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  margin: 10px; 
+}
+
+.agent-profile button.btn:hover {
+  background-color: #333; 
+  transform: scale(1.05); 
+}
+
+/* Delete Button */
+.agent-profile button.delete-btn {
+  background-color: #c92424; 
+  color: white;
+  padding: 12px 30px;
+  border: 1px solid #151515; 
+  border-radius: 6px; 
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  margin: 10px; 
+}
+
+.agent-profile button.delete-btn:hover {
+  background-color: #fc4545; 
+  transform: scale(1.05); 
+}
+
+/* Labels */
+.agent-profile label {
+  font-weight: bold; 
+  margin-bottom: 5px; 
+  display: block;
+  font-size: 16px;
+  color: #333; 
+  text-align: left; 
+}
+
+/* General Image Styling */
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px; 
+}
+
+/* Agent Card Specific Styles */
+.agent-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Hover Effect for Agent Profile */
 .agent-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle hover effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  border: 2px solid #333; 
+  background-color: #f0efe7; 
+  transition: all 0.3s ease-in-out; 
+}
+
+/* Profile Details Styling */
+.agent-profile p {
+  margin: 12px 0; 
+  font-size: 16px; 
+  color: #444; 
+}
+
+/* Center Button Section */
+.agent-profile .button-container {
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  margin-top: 20px; 
 }

@@ -4,7 +4,7 @@
   align-items: center;
   background-color: #151515;
   color: white;
-  padding: 20px 20px;
+  padding: 10px 10px;
   width: 100%;
   position: sticky;
   top: 0;
@@ -18,8 +18,8 @@
 }
 
 .main-header .logo img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 10px;
 }
 
@@ -31,9 +31,9 @@
   background-color: white; 
   color: #151515; 
   border: 1px solid #ccc; 
-  padding: 12px 30px; 
+  padding: 12px 20px; 
   border-radius: 4px; 
-  font-size: 20px; 
+  font-size: 15px; 
   font-family: 'Jacques Francois', serif; 
   cursor: pointer;
   margin-left: 15px; 
@@ -53,7 +53,7 @@
   justify-content: flex-start; 
   align-items: center;
   background-color: #ebeadc;
-  padding: 15px 20px;
+  padding: 10px 12px;
   border-bottom: 2px solid #ccc;
   width: 100%;
   font-family: 'Jacques Francois', serif;
@@ -62,21 +62,20 @@
 .search-header .search-bar input {
   width: 100%;
   max-width: 400px;
-  padding: 12px 15px;
+  padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: 'Jacques Francois', serif;
-  font-size: 18px; /* Increased font size */
-  
+  font-size: 18px; 
 }
 
 .search-btn {
   background-color: black; 
   color: white; 
   border: none; 
-  padding: 12px 20px; 
+  padding: 10px 12px; 
   border-radius: 4px;
-  font-size: 20px; 
+  font-size: 15px; 
   font-family: 'Jacques Francois', serif; 
   cursor: pointer;
   margin-left: 10px; 
@@ -89,14 +88,14 @@
 
 .search-header .filters {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .search-header .filters .dropdown {
-  padding: 12px 15px;
+  padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 18px;
+  font-size: 15px;
   font-family: 'Jacques Francois', serif;
   cursor: pointer;
 }
@@ -115,7 +114,7 @@
 .location-input {
   width: 200px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: 'Jacques Francois', serif;
@@ -123,7 +122,7 @@
 
 .specialization-dropdown {
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: 'Jacques Francois', serif;

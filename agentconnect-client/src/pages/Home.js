@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchAgents } from '../api'; 
+import { fetchAgents } from '../api';
 import "./../styles/home.css";
 
 const Home = () => {
@@ -30,32 +30,31 @@ const Home = () => {
       <div className="cards-container">
         {agents.length > 0 ? (
           agents.map((agent) => (
-            <div key={agent._id} className="agent-card">
-            {/* Picture and Name Container */}
-            <div className="agent-top-section">
-              <img
-                src={`${process.env.REACT_APP_BACKEND_URL}${agent.image || '/uploads/placeholder.jpg'}`}
-                alt={`${agent.name}'s profile`}
-                className="agent-image"
-              />
-              <h2>{agent.name}</h2>
+            <div key={agent._id} className="home-agent-card">
+              {/* Picture and Name Container */}
+              <div className="home-agent-top-section">
+                <img
+                  src={`${process.env.REACT_APP_BACKEND_URL}${agent.image || '/uploads/placeholder.jpg'}`}
+                  alt={`${agent.name}'s profile`}
+                  className="home-agent-image"
+                />
+                <h2>{agent.name}</h2>
+              </div>
+
+              {/* Details Section */}
+              <div className="home-agent-details">
+                <p><strong>📞 Phone Number:</strong> {agent.number || 'N/A'}</p>
+                <p><strong>🏠 Specialty:</strong> {agent.specializations?.join(', ') || 'N/A'}</p>
+                <p><strong>🕒 Experience:</strong> {agent.experience || 'N/A'} Years</p>
+                <p><strong>📍 Areas Served:</strong> {agent.areaServed?.join(', ') || 'N/A'}</p>
+                <button
+                  className="btn learn-more"
+                  onClick={() => handleLearnMore(agent._id)}
+                >
+                  Learn More
+                </button>
+              </div>
             </div>
-          
-            {/* Details Section */}
-            <div className="agent-details">
-              <p><strong>📞 Phone Number:</strong> {agent.number || 'N/A'}</p>
-              <p><strong>🏠 Specialty:</strong> {agent.specializations?.join(', ') || 'N/A'}</p>
-              <p><strong>🕒 Experience:</strong> {agent.experience || 'N/A'} Years</p>
-              <p><strong>📍 Areas Served:</strong> {agent.areaServed?.join(', ') || 'N/A'}</p>
-              <button
-                className="btn learn-more"
-                onClick={() => handleLearnMore(agent._id)}
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-          
           ))
         ) : (
           <p>No agents found. Please check back later!</p>
