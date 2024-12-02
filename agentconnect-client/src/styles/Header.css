@@ -1,0 +1,134 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #151515;
+  color: white;
+  padding: 10px 10px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Jacques Francois', serif;
+}
+
+.main-header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.main-header .logo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.main-header .title {
+  font-size: 24px;
+}
+
+.main-header .auth-buttons .btn {
+  background-color: white; 
+  color: #151515; 
+  border: 1px solid #ccc; 
+  padding: 12px 20px; 
+  border-radius: 4px; 
+  font-size: 15px; 
+  font-family: 'Jacques Francois', serif; 
+  cursor: pointer;
+  margin-left: 15px; 
+}
+
+.main-header .auth-buttons .btn:first-child {
+  margin-left: 0; 
+}
+
+.main-header .auth-buttons .btn:hover {
+  background-color: #f0f0f0; 
+  color: #151515;
+}
+
+.search-header {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  background-color: #ebeadc;
+  padding: 10px 12px;
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  font-family: 'Jacques Francois', serif;
+}
+
+.search-header .search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Jacques Francois', serif;
+  font-size: 18px; 
+}
+
+.search-btn {
+  background-color: black; 
+  color: white; 
+  border: none; 
+  padding: 10px 12px; 
+  border-radius: 4px;
+  font-size: 15px; 
+  font-family: 'Jacques Francois', serif; 
+  cursor: pointer;
+  margin-left: 10px; 
+}
+
+.search-btn:hover {
+  background-color: #333; 
+  color: white; 
+}
+
+.search-header .filters {
+  display: flex;
+  gap: 10px;
+}
+
+.search-header .filters .dropdown {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: 'Jacques Francois', serif;
+  cursor: pointer;
+}
+
+.logo-link:hover {
+  color: white; 
+  text-decoration: underline; 
+}
+.brand-name {
+  font-size: 30px;
+  font-family: 'Jacques Francois', serif;
+  color: white !important;
+}
+
+/*Specialization Dropdown */
+.location-input {
+  width: 200px;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Jacques Francois', serif;
+}
+
+.specialization-dropdown {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Jacques Francois', serif;
+  cursor: pointer;
+}
+
+.specialization-dropdown:hover {
+  background-color: #f0f0f0; 
+}

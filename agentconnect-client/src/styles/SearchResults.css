@@ -1,0 +1,102 @@
+/* Search Results Container */
+.search-results {
+  padding: 40px; 
+  background-color: #f8f9fa; 
+  font-family: 'Jacques Francois', serif; 
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); 
+  margin: 40px auto; 
+  max-width: 1200px; 
+}
+
+/* Title Styling */
+.search-results h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 34px; 
+  color: #111; 
+  text-transform: capitalize; 
+  font-weight: bold; 
+  letter-spacing: 1px; 
+  border-bottom: 2px solid #ccc; /* Underline for title emphasis */
+  padding-bottom: 10px; 
+}
+
+/* Cards Container */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 30px; 
+  justify-content: center; 
+  margin-top: 20px; 
+}
+
+/* No Agents Found Message */
+.search-results p {
+  text-align: center;
+  font-size: 18px;
+  color: #777; /* Subtle text color for messages */
+  margin-top: 20px;
+}
+
+/* Agent Card Styling */
+.agent-card {
+  background: white;
+  border: 1px solid #ccc; 
+  border-radius: 12px; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  text-align: center; 
+}
+
+/* Agent Card Hover Effect */
+.agent-card:hover {
+  transform: translateY(-8px); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+}
+
+/* Agent Image */
+.agent-card img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%; 
+  object-fit: cover;
+  margin: 0 auto 15px auto; 
+  border: 3px solid #ccc; 
+}
+
+/* Agent Name Styling */
+.agent-card h2 {
+  font-size: 24px; 
+  font-weight: bold;
+  color: #111; 
+  margin-bottom: 10px; 
+  text-transform: capitalize; 
+}
+
+/* Agent Details Styling */
+.agent-card p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+/* Button Styling */
+.agent-card .btn {
+  margin-top: 15px;
+  padding: 12px 25px;
+  background-color: #151515; 
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.agent-card .btn:hover {
+  background-color: #333; 
+  transform: scale(1.05); 
+}
