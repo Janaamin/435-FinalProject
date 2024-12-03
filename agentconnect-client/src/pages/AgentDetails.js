@@ -11,26 +11,23 @@ const AgentDetails = () => {
     const fetchAgent = async () => {
       try {
         const token = localStorage.getItem('token');
-        if (!token) {
-          throw new Error('Unauthorized. Please log in.');
-        }
-
         const response = await fetch(
           `${process.env.REACT_APP_BACKEND_URL}/api/users/agents/${id}`,
           {
             method: 'GET',
             headers: {
-              'Authorization': `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
           }
         );
-
+  
         if (!response.ok) {
           throw new Error('Failed to fetch agent details');
         }
-
+  
         const data = await response.json();
+        console.log('Fetched agent details:', data); // Debug log
         setAgent(data);
       } catch (error) {
         console.error('Error fetching agent details:', error.message);
@@ -38,10 +35,10 @@ const AgentDetails = () => {
         setLoading(false);
       }
     };
-
+  
     fetchAgent();
   }, [id]);
-
+  
   if (loading) return <p className="loading-message">Loading agent details...</p>;
   if (!agent) return <p className="error-message">Agent not found.</p>;
 

@@ -11,40 +11,39 @@ const AgentProfile = ({ id }) => {
       try {
         const token = localStorage.getItem('token');
         const response = await fetch(`/api/users/agents/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) {
           throw new Error('Failed to fetch agent');
         }
         const data = await response.json();
+        console.log('Fetched agent:', data); // Debug log
         setAgent(data);
         setLearnMore(data.learnMore || ''); // Initialize "Learn More" field
       } catch (error) {
         console.error('Error fetching agent:', error);
       }
     };
-
+  
     fetchAgent();
   }, [id]);
-
+  
   const handleSave = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`/api/users/agents/${id}`, {
+      const response = await fetch(`/api/users/profile`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ learnMore }),
+        body: JSON.stringify({ learnMore }), // Send the learnMore field
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to update agent details');
       }
-
+  
       const updatedAgent = await response.json();
       setAgent(updatedAgent); // Update the state with the latest details
       setIsEditing(false); // Exit editing mode
@@ -52,6 +51,7 @@ const AgentProfile = ({ id }) => {
       console.error('Error updating agent:', error);
     }
   };
+  
 
   if (!agent) {
     return <p>Loading agent details...</p>;
