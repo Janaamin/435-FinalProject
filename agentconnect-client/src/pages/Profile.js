@@ -116,20 +116,20 @@ const Profile = () => {
     const token = localStorage.getItem('token');
     try {
       const formDataObj = new FormData();
-
+  
       const normalizedFormData = {
         ...formData,
         specializations: formData.specializations
-          ?.split(',')
-          .map((v) => v.trim())
-          .filter(Boolean),
-        areaServed: formData.areaServed
-          ?.split(',')
-          .map((v) => v.trim())
-          .filter(Boolean),
-        learnMore: formData.learnMore, // Include learnMore
-      };
-
+        ?.split(',')
+        .map(v => v.trim())
+        .filter(Boolean),
+      areaServed: formData.areaServed
+        ?.split(',')
+        .map(city => city.trim()) // Ensure cities are stored as an array
+        .filter(Boolean),
+      learnMore: formData.learnMore, // Include learnMore
+    };
+  
       for (const key in normalizedFormData) {
         if (key === 'imageFile' && normalizedFormData[key]) {
           formDataObj.append('image', normalizedFormData[key]);
@@ -137,17 +137,17 @@ const Profile = () => {
           formDataObj.append(key, normalizedFormData[key]);
         }
       }
-
+  
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/profile`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` },
         body: formDataObj,
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to update profile');
       }
-
+  ///// Learn More//////
       const updatedData = await response.json();
       setAgent(updatedData);
       setFormData({
@@ -164,6 +164,7 @@ const Profile = () => {
       alert('Error updating profile. Please try again.');
     }
   };
+  
 
   if (loading) return <p>Loading agent details...</p>;
   if (!agent) return <p>No profile information available.</p>;
