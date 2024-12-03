@@ -2,15 +2,16 @@ const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const cors = require('cors');
-
+const path = require('path');
 
 dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 // Middleware
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors()); // Allow all origins (for development)
 
 // Middleware
